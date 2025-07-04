@@ -38,7 +38,7 @@ public class VerzweigungSwitch {
             }
             break;
             default:{
-                System.out.println("Ihre Antwort muss entweder a, b, c oder d sein");
+                throw new IllegalArgumentException("Ihre Antwort muss entweder a, b, c oder d sein");
             }
 
         }
