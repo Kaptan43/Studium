@@ -26,7 +26,7 @@ public class AufgabeVerzweigung {
             System.out.println("Ihre Antwort ist falsch!");
         }
         else{
-            throw new IllegalArgumentException("Die Eingabe muss entweder a, b, c oder d sein");
+            throw new IllegalArgumentException("Die Eingabe muss entweder a, b, c oder d sein!");
         }
     }
 }
