@@ -8,4 +8,10 @@ public class MacBook extends Laptop{
         super(marke,ram,cpu,preis);
         this.touchBar = touchBar;
     }
+
+    @Override
+    public void starten(){
+        super.starten();
+        System.out.println("MacBook starten");
+    }
 }

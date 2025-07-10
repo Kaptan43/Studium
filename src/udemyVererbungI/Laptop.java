@@ -15,7 +15,7 @@ public class Laptop {
     }
 
     public void starten(){
-
+        System.out.println("Laptop starten");
     }
 
 }
