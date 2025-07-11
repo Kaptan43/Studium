@@ -4,8 +4,10 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Auto testAuto = new Auto("Michellin", "Sommerreifen", "BMW");
-        System.out.println(testAuto.reifen.reifenTyp);
+        Auto bmw = new Auto("Goodyear", "Sommerreifen", "BMW");
+        Auto vw = new Auto("Michellin", "Winterreifen", "VW");
 
+        bmw.ausgabeDaten();
+        vw.ausgabeDaten();
     }
 }
