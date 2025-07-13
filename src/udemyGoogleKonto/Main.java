@@ -6,6 +6,6 @@ public class Main {
 
         GoogleKonto emre = new GoogleKonto("Emre", "1234567");
 
-        emre.setPasswort("1234567");
+        emre.setPasswort();
     }
 }
