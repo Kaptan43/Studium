@@ -1,9 +1,46 @@
 package udemyAngstellteComparator;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+
+class SortiereAngestelltenID implements Comparator<Angestellter>{
+
+    @Override
+    public int compare(Angestellter o1, Angestellter o2) {
+        if(o1.getId() > o2.getId()){
+            return 1;
+        }
+        else if(o1.getId() < o2.getId()){
+            return -1;
+        }
+        else{
+            return 0;
+        }
+    }
+}
+
+class SortiereAngestelltenName implements Comparator<Angestellter>{
+
+    @Override
+    public int compare(Angestellter o1, Angestellter o2) {
+        return o1.getName().compareTo(o2.getName());
+    }
+}
+
+class SortiereAngestelltenGeburtsjahr implements Comparator<Angestellter>{
+
+    @Override
+    public int compare(Angestellter o1, Angestellter o2) {
+        if(o1.getGeburtsjahr() > o2.getGeburtsjahr()){
+            return 1;
+        }
+        else if(o1.getGeburtsjahr() < o2.getGeburtsjahr()){
+            return -1;
+        }
+        else{
+            return 0;
+        }
+    }
+}
 
 public class AngestelltenListe {
 
@@ -12,6 +49,15 @@ public class AngestelltenListe {
         List<Angestellter> angestelltenListe = new ArrayList<>();
 
         addAngestellter(3, angestelltenListe);
+
+        System.out.println("Sortiert nach ID: ");
+        Collections.sort(angestelltenListe, new SortiereAngestelltenID());
+
+//        System.out.println("Sortiert nach Name: ");
+//        Collections.sort(angestelltenListe, new SortiereAngestelltenName());
+//
+//        System.out.println("Sortiert nach Geburtsjahr: ");
+//        Collections.sort(angestelltenListe, new SortiereAngestelltenGeburtsjahr());
 
         getAngestellter2(angestelltenListe);
 
