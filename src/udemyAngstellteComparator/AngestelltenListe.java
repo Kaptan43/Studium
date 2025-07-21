@@ -61,6 +61,9 @@ public class AngestelltenListe {
 
         getAngestellter2(angestelltenListe);
 
+        Set<Angestellter> angestellterSet = new TreeSet<>(new SortiereAngestelltenID());
+        Map<Angestellter, String> angestellterMap = new TreeMap<>(new SortiereAngestelltenID());
+
     }
 
     public static void addAngestellter(int anzahl, Collection<Angestellter> col) {
