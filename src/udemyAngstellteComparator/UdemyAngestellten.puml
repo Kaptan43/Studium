@@ -1,0 +1,46 @@
+@startuml
+
+class Angestellter{
+    - int: id
+    - String: name
+    - int: geburtsjahr
+
+    + Angestellter(id, name, geburtsjahr)
+    + getID(): int
+    + setID(int): void
+    + getName(): String
+    + setName(String): void
+    + getGeburtsjahr(): int
+    + setGeburtsjahr(int): void
+    + toString(): String
+}
+
+class AngestelltenListe{
+    + {static} main(String[]): void
+    + {static} addAngestellter(int, Collection<Angestellter>): void
+    + {static} getAngestellter(Collection<Angestellter>): void
+}
+
+interface Comparator{
+    + compare(Object, Object): int
+}
+
+class SortiereAngestelltenID{
+    + compare(Object, Object): int
+}
+
+class SortiereAngestelltenName{
+    + compare(Object, Object): int
+}
+
+class SortiereAngestelltenGeburtsjahr{
+    + compare(Object, Object): int
+}
+
+Comparator <|-- SortiereAngestelltenID
+Comparator <|-- SortiereAngestelltenName
+Comparator <|-- SortiereAngestelltenGeburtsjahr
+
+
+
+@enduml
