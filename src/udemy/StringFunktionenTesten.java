@@ -16,6 +16,14 @@ public class StringFunktionenTesten {
             str1.append(i);
             System.out.println(str1);
         }
+
+        System.out.println("---------------------------");
+
+        StringBuilder str2 = new StringBuilder();
+        for(int i = 0; i < 100; i++){
+            str2.append(i);
+            System.out.println(str2);
+        }
     }
 
 }
