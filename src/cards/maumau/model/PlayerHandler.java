@@ -13,6 +13,9 @@ class PlayerHandler {
     private final List<Player> ranking = new ArrayList<>();
     private Player remember;
 
+    private boolean finished = false;
+    private PlayerState state = new S_WaitForNextTurn(this);
+
     /**
      * Constructs a PlayerHandler for the specified MauMau game.
      *
@@ -20,6 +23,18 @@ class PlayerHandler {
      */
     PlayerHandler(MauMau game) {
         this.game = game;
+    }
+
+    Player getRemember() {
+        return remember;
+    }
+
+    void setRemember(Player remember) {
+        this.remember = remember;
+    }
+
+    void setState(PlayerState state) {
+        this.state = state;
     }
 
     /**
@@ -84,6 +99,10 @@ class PlayerHandler {
      */
     private void localNextTurn(int n) {
         //TODO implement
+    }
+
+    void doLocalNextTurn(int n) {
+        localNextTurn(n);
     }
 
     /**
