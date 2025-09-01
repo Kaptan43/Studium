@@ -44,6 +44,7 @@ class PlayerHandler {
      */
     void nextTurn(int n) {
         //TODO implement
+        state.nextTurn(n);
     }
 
     /**
@@ -53,6 +54,7 @@ class PlayerHandler {
      */
     void mau(Player p) {
         //TODO implement
+        state.mau(p);
     }
 
     /**
@@ -62,6 +64,7 @@ class PlayerHandler {
      */
     void maumau(Player p) {
         //TODO implement
+        state.maumau(p);
     }
 
     /**
@@ -90,6 +93,12 @@ class PlayerHandler {
      */
     void addPlayer(Player player) {
         //TODO implement
+        for(Player  p : players) {
+            if(p.getName().equals(player.getName())) {
+                throw new IllegalArgumentException("Spieler existiert bereits" + p.getName());
+            }
+        }
+        players.add(player);
     }
 
     /**
@@ -99,6 +108,10 @@ class PlayerHandler {
      */
     private void localNextTurn(int n) {
         //TODO implement
+        for(int i = 0; i < n; i++) {
+            if(players.isEmpty()) return;
+            players.addLast(players.removeFirst());
+        }
     }
 
     void doLocalNextTurn(int n) {
