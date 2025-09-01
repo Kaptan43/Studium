@@ -105,13 +105,30 @@ class PlayerHandler {
         localNextTurn(n);
     }
 
+    void doFinishPlayer(Player p) {
+        finishPlayer(p);
+    }
+
     /**
      * Finishes a player's participation in the game.
      *
      * @param p The player to finish.
      */
     private void finishPlayer(Player p) {
-        //TODO implement
+        if (players.remove(p)) {
+            ranking.add(p);
+        }
+
+        if (players.size() == 1) {
+            ranking.add(players.get(0));
+            finished = true;
+            game.getActionHandler().finishGame();
+            players.clear();
+        }
+    }
+
+    boolean isFinished() {
+        return finished;
     }
 
     /**

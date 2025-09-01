@@ -15,17 +15,21 @@ public class S_WaitForNextTurn extends PlayerState {
 
         if(hand == 1){
             playerHandler.setRemember(current);
-            playerHandler.setState(new S_WaitforMau(playerHandler));
+            playerHandler.doLocalNextTurn(n);
+            playerHandler.setState(new S_WaitForMau(playerHandler));
             return;
         }
 
         if(hand == 0){
             playerHandler.setRemember(current);
-            playerHandler.setState(new S_WaitforMauMau(playerHandler));
+            playerHandler.doLocalNextTurn(n);
+            playerHandler.setState(new S_WaitForMauMau(playerHandler));
             return;
         }
 
         //OTHERWISE
         playerHandler.doLocalNextTurn(n);
+        //playerHandler.setState(new S_WaitForNextTurn(playerHandler));    --> Unnötig, da ich mich in dem S_WaitForNextTurn bereits befinde!
     }
+
 }
