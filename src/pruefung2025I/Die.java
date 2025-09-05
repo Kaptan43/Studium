@@ -9,7 +9,7 @@ public enum Die {
     SIX;
 
     public static Die random(){
-        return Die.random();
+        return THREE;
     }
 
 }

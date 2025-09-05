@@ -48,18 +48,18 @@ public class Student {
     Student dave = new Student("Dave", 23, 3.5);
     Student elli = new Student("Elli", 23, 3.0);
 
-    public TreeMap<Student, Object> namenSortieren(List<Student> students){
-        TreeMap<Integer, Object> sortedStudents = new TreeMap<>();
-
-        for(Student student : students){
-            sortedStudents.put(student.getAge(), student.getGrade());
-        }
-        return sortedStudents;
-    }
-
-    @Override
-    public static void main(String[] args){
-        System.out.println(Student.namenSortieren);
-    }
+//    public TreeMap<Student, Object> namenSortieren(List<Student> students){
+//        TreeMap<Integer, Object> sortedStudents = new TreeMap<>();
+//
+//        for(Student student : students){
+//            sortedStudents.put(student.getAge(), student.getGrade());
+//        }
+//        return sortedStudents;
+//    }
+//
+//    @Override
+//    public static void main(String[] args){
+//        System.out.println(Student.namenSortieren);
+//    }
 
 }

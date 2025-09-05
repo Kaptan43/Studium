@@ -4,7 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PairOfDice implements Comparable<PairOfDice> {
-
+    @Override
+    public int compareTo(PairOfDice o) {
+        return 0;
+    }
+    /*
     private Die die1;
     private Die die2;
 
@@ -35,8 +39,8 @@ public class PairOfDice implements Comparable<PairOfDice> {
     }
 
     public boolean isMaerchen(PairOfDice pair){
-        int a = diceToMap().get(Die.ONE);
-        int b = diceToMap().get(Die.TWO);
+        int a = initDice().get(Die.ONE);
+        int b = initDice().get(Die.TWO);
 
         if(a+b == 3){
             return true;
@@ -44,7 +48,7 @@ public class PairOfDice implements Comparable<PairOfDice> {
         return false;
     }
 
-    public Map<Die, Integer> diceToMap(){
+    public Map<Die, Integer> initDice(){
 
         Map<Die, Integer> dice = new HashMap<>();
 
@@ -77,5 +81,5 @@ public class PairOfDice implements Comparable<PairOfDice> {
         }
         throw new IllegalArgumentException("Vergleich nicht möglich!");
     }
-
+    */
 }
