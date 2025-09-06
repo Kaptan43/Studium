@@ -78,9 +78,9 @@ public class PairOfDice implements Comparable<PairOfDice> {
             return 100;
         }
         if (isPasch()){
-            return 90+a;
+            return 90 + a;
         }
-        return higher * 10 + lower;
+        return higher*10 + lower;
     }
 
 
@@ -108,6 +108,7 @@ class Testen{
         PairOfDice pasch66 = new PairOfDice(Die.SIX, Die.SIX);
         PairOfDice normal65 = new PairOfDice(Die.SIX, Die.FIVE);
         PairOfDice normal13 = new PairOfDice(Die.ONE, Die.THREE);
+        PairOfDice normal56 = new PairOfDice(Die.FIVE, Die.SIX);
 
         System.out.println();
 
@@ -115,6 +116,7 @@ class Testen{
         System.out.println("66: " + pasch66);
         System.out.println("65: " + normal65);
         System.out.println("13: " + normal13);
+        System.out.println("56: " + normal56);
 
         System.out.println();
 
@@ -123,6 +125,7 @@ class Testen{
         System.out.println("21 vs 13: " + maerchen.compareTo(normal13));
         System.out.println("13 vs 65: " + normal13.compareTo(normal65));
         System.out.println("13 vs 13: " + normal13.compareTo(normal13));
+        System.out.println("56 vs 65: " + normal56.compareTo(normal65));
     }
 
 }
