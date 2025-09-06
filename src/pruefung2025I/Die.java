@@ -1,5 +1,7 @@
 package pruefung2025I;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public enum Die {
     ONE,
     TWO,
@@ -9,7 +11,9 @@ public enum Die {
     SIX;
 
     public static Die random(){
-        return THREE;
+        Die[] values = Die.values();
+        int index = ThreadLocalRandom.current().nextInt(values.length);
+        return values[index];
     }
 
 }

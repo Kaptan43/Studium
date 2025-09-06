@@ -1,16 +1,11 @@
 package pruefung2025I;
 
-import java.util.HashMap;
-import java.util.Map;
 
 public class PairOfDice implements Comparable<PairOfDice> {
-    @Override
-    public int compareTo(PairOfDice o) {
-        return 0;
-    }
-    /*
-    private Die die1;
-    private Die die2;
+
+
+    private final Die die1;
+    private final Die die2;
 
     public  PairOfDice(Die die1, Die die2){
         this.die1 = die1;
@@ -31,55 +26,103 @@ public class PairOfDice implements Comparable<PairOfDice> {
 
     }
 
-    public boolean isPasch(PairOfDice pair){
-        if (pair.die1 == pair.die2){
+    private static int wertToInt(Die die){
+        switch(die){
+            case ONE -> {return 1;}
+            case TWO -> {return 2;}
+            case THREE -> {return 3;}
+            case FOUR -> {return 4;}
+            case FIVE -> {return 5;}
+            case SIX -> {return 6;}
+            default -> throw new IllegalArgumentException("Kein gültiger Wert!");
+        }
+    }
+
+    private static int[] hiLo(int hi, int lo){
+        if(hi >= lo){
+            return new int[]{hi, lo};
+        }
+        else {
+            return new int[]{lo, hi};
+        }
+    }
+
+    public boolean isPasch(){
+        if (die1 == die2){
             return true;
         }
         return false;
     }
 
-    public boolean isMaerchen(PairOfDice pair){
-        int a = initDice().get(Die.ONE);
-        int b = initDice().get(Die.TWO);
+    public boolean isMaerchen(){
+        int a = wertToInt(die1);
+        int b = wertToInt(die2);
 
-        if(a+b == 3){
+        int[] hl = hiLo(a, b);
+
+        if( hl[0] == 2 && hl[1] == 1 ){
             return true;
         }
+
         return false;
     }
 
-    public Map<Die, Integer> initDice(){
+    private int rank(){
+        int a = wertToInt(die1);
+        int b = wertToInt(die2);
+        int[] hl = hiLo(a, b);
+        int higher = hl[0];
+        int lower = hl[1];
 
-        Map<Die, Integer> dice = new HashMap<>();
-
-        if (isPasch(this)) {
-            dice.put(Die.ONE, 1);
-            dice.put(Die.TWO, 2);
-            dice.put(Die.THREE, 3);
-            dice.put(Die.FOUR, 4);
-            dice.put(Die.FIVE, 5);
-            dice.put(Die.SIX, 6);
+        if( isMaerchen()){
+            return 100;
         }
-        if(isMaerchen(this)){
-            dice.put(Die, 7);
+        if (isPasch()){
+            return 90+a;
         }
-        return dice;
+        return higher * 10 + lower;
     }
+
 
     @Override
     public int compareTo(PairOfDice other) {
-        PairOfDice p = new PairOfDice(die1, die2);
-
-        if(p.compareTo(other) < 0){
+        if( this.rank() < other.rank() ){
             return -1;
         }
-        if(p.compareTo(other) > 0) {
+        else if( this.rank() > other.rank() ){
             return 1;
         }
-        if(p.compareTo(other) == 0) {
-            return 0;
-        }
-        throw new IllegalArgumentException("Vergleich nicht möglich!");
+        return 0;
     }
-    */
+
+    @Override
+    public String toString(){
+        return "(" + wertToInt(die1) + "," + wertToInt(die2) + ")";
+    }
+
+}
+
+class Testen{
+    public static void main(String[] args) {
+        PairOfDice maerchen = new PairOfDice(Die.TWO, Die.ONE);
+        PairOfDice pasch66 = new PairOfDice(Die.SIX, Die.SIX);
+        PairOfDice normal65 = new PairOfDice(Die.SIX, Die.FIVE);
+        PairOfDice normal13 = new PairOfDice(Die.ONE, Die.THREE);
+
+        System.out.println();
+
+        System.out.println("Märchen: " + maerchen);
+        System.out.println("66: " + pasch66);
+        System.out.println("65: " + normal65);
+        System.out.println("13: " + normal13);
+
+        System.out.println();
+
+        System.out.println("21 vs 66: " + maerchen.compareTo(pasch66));
+        System.out.println("21 vs 65: " + maerchen.compareTo(normal65));
+        System.out.println("21 vs 13: " + maerchen.compareTo(normal13));
+        System.out.println("13 vs 65: " + normal13.compareTo(normal65));
+        System.out.println("13 vs 13: " + normal13.compareTo(normal13));
+    }
+
 }
