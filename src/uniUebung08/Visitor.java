@@ -1,6 +1,6 @@
 package uniUebung08;
 
-public interface Visitor<Integer> {
+public interface Visitor<T> {
 
     Integer visitImage(Image image);
     Integer visitParagraph(Paragraph paragraph);

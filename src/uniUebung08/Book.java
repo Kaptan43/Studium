@@ -40,7 +40,7 @@ public class Book {
        return this.accept(countWordsVisitor);
     }
 
-    public String tableOfContents() {
+    public List<String> tableOfContents() {
         //ToDo
         return null;
     }
