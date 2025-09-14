@@ -38,7 +38,7 @@ public class CountWordsVisitor implements Visitor<Integer> {
     public Integer visitBook(Book book){
         int counter = 0;
         for(TextComponent tc : book.getContents()){
-            counter += tc.countWords();
+            counter += tc.accept(this);
         }
         return counter;
     }
