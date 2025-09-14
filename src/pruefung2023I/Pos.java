@@ -31,8 +31,14 @@ public class Pos {
         return x + y * 50;
     }
 
+    @Override
     public boolean equals(Object o){
-        return o.equals(this);
+        if(this == o) return true;
+        if(!(o instanceof Pos)){
+            return false;
+        }
+        Pos pos = (Pos) o;
+        return this.x == pos.x && this.y == pos.y;
     }
 
 }
