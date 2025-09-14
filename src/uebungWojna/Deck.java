@@ -7,41 +7,41 @@ import java.util.List;
 
 public class Deck implements Iterable<Card> {
 
-    private List<Card> cards = new ArrayList<>(52);
+    private List<Card> deck = new ArrayList<>(52);
 
     public Deck() {
         for (Rank r : Rank.values()) {
             for (Suit s : Suit.values()) {
-                cards.add(new Card(r, s));
+                deck.add(new Card(r, s));
             }
         }
     }
 
     public int size() {
-        return cards.size();
+        return deck.size();
     }
 
     public boolean isEmpty() {
-        return cards.isEmpty();
+        return deck.isEmpty();
     }
 
     public void shuffle() {
-        Collections.shuffle(cards);
+        Collections.shuffle(deck);
     }
 
     public List<Card> draw(int n){
-        if(n<0 || n > cards.size()) {
+        if(n<0 || n > deck.size()) {
             throw new IllegalArgumentException("");
         }
-        int from = cards.size() - n;
-        List<Card> taken = new ArrayList<>(cards.subList(from, cards.size()));
-        cards.subList(from, cards.size()).clear();
+        int from = deck.size() - n;
+        List<Card> taken = new ArrayList<>(deck.subList(from, deck.size()));
+        deck.subList(from, deck.size()).clear();
 
         return taken;
     }
 
     @Override
     public Iterator<Card> iterator() {
-        return Collections.unmodifiableList(cards).iterator();
+        return Collections.unmodifiableList(deck).iterator();
     }
 }
