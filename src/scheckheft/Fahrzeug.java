@@ -1,6 +1,7 @@
 package scheckheft;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -12,8 +13,8 @@ public abstract class Fahrzeug {
     private String kraftstoff;
     private List<InspektionsEintrag> inspektionen;
 
-    public Fahrzeug(String kennzeichen, String hersteller, String modell, String kraftstoff) {
-        //ToDo --> ID initialisieren! --> Ich möchte hier das Format verwenden FahrzeugTyp-LaufendeNr (also für ein Motorrad z.B.: M-0001). Diese soll einzigartig sein!
+    public Fahrzeug(String id, String kennzeichen, String hersteller, String modell, String kraftstoff) {
+        this.id = id;
         this.kennzeichen = kennzeichen;
         this.hersteller = hersteller;
         this.modell = modell;
@@ -42,8 +43,8 @@ public abstract class Fahrzeug {
     }
 
     public List<InspektionsEintrag> getInspektionen() {
-        return inspektionen;
-    } //ToDo --> Fehler beheben!
+        return Collections.unmodifiableList(inspektionen);
+    }
 
     public void setKennzeichen(String kennzeichen){
         this.kennzeichen = kennzeichen;
@@ -57,21 +58,14 @@ public abstract class Fahrzeug {
         return inspektionen.removeIf(inspektion -> inspektion.getId().equals(id)); //ToDo --> Habe ich nicht selber geschrieben, verstehen, was hier genau passiert und ob es das gewünschte Ergebnis liefert!
     }
 
-    public List<InspektionsEintrag> getInspektionen(){
-        return inspektionen;
-    } //ToDo --> Fehler beheben!
-
     public List<InspektionsEintrag> getInspektionsEintragSortiertNachDatum(){
-        return inspektionen.sort(Comparator.comparing(InspektionsEintrag::getDatum)); //ToDo --> Habe ich nicht selber geschrieben, verstehen, was hier genau passiert und ob es das gewünschte Ergebnis liefert!
+        return inspektionen.stream().sorted(Comparator.comparing(InspektionsEintrag::getDatum)).toList();
     }
 
     public InspektionsEintrag getLetzteInspektion(){
-        return inspektionen.getLast(); //ToDO --> Liefert es das gewünschte Ergebnis?
+        return inspektionen.get(inspektionen.size()-1); //ToDo --> Habe ich nicht selber geschrieben, verstehen, was hier genau passiert!
     }
 
-    /*ToDo --> Was soll dieses hier genau machen und brauche ich dafür eine neue Abstrakteklasse?
-        public abstract FahrzeugArt getFahrzeugArt(){
-        return FahrzeugArt;
-        }
-     */
+    public abstract FahrzeugArt getFahrzeugArt();
+
 }
