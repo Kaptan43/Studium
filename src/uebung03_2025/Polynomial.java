@@ -23,4 +23,12 @@ public class Polynomial {
     public static Polynomial constant(int v){
         return new Polynomial(new int[]{v});
     }
+
+    public int getDegree(){
+        return degree;
+    }
+
+    public static void main(String[] args) {
+        Polynomial p = new Polynomial(new int[]{1, -2, 3, 4});
+    }
 }
