@@ -1,5 +1,7 @@
 package pruefung2023I;
 
+import java.util.Objects;
+
 public class Pos {
 
     private final int x;
@@ -27,8 +29,9 @@ public class Pos {
         return "(" + x + "," + y + ")";
     }
 
-    public int hasCode(){
-        return x + y * 50;
+    @Override
+    public int hashCode(){
+        return Objects.hash(x, y);
     }
 
     @Override
